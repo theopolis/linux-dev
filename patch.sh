@@ -87,6 +87,7 @@ function beagle {
 echo "[git] Board Patches for: BeagleBoard"
 
 git pull git://github.com/RobertCNelson/linux.git omap_beagle_expansion_v3.1-rc9
+git am "${DIR}/patches/beagle/ulcd/0001-WIP-ARM-OMAP-Beagle-ulcd.patch"
 
 patch -s -p1 < "${DIR}/patches/arago-project/0001-omap3-Increase-limit-on-bootarg-mpurate.patch"
 patch -s -p1 < "${DIR}/patches/display/0001-meego-modedb-add-Toshiba-LTA070B220F-800x480-support.patch"
