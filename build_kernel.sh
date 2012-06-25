@@ -68,6 +68,7 @@ function git_kernel_stable {
 }
 
 function git_kernel {
+	echo "BEGIN: git_Kernel"
 	if [ -f ${LINUX_GIT}/.git/config ] ; then
 		if [ -f ${LINUX_GIT}/version.sh ] ; then
 			echo ""
@@ -83,8 +84,8 @@ function git_kernel {
 
 		cd ${LINUX_GIT}/
 		echo "Debug: LINUX_GIT setup..."
-		pwd
-		cat .git/config
+		#pwd
+		#cat .git/config
 		echo "Updating LINUX_GIT tree via: git fetch"
 		git fetch || true
 		cd -
@@ -101,10 +102,10 @@ function git_kernel {
 		git commit --allow-empty -a -m 'empty cleanup commit'
 
 		git checkout origin/master -b tmp-master
-		git branch -D master &>/dev/null || true
+		git branch -D master || true
 
 		git checkout origin/master -b master
-		git branch -D tmp-master &>/dev/null || true
+		git branch -D tmp-master || true #&>/dev/null
 
 		git pull ${GIT_OPTS} || true
 
@@ -143,6 +144,7 @@ function git_kernel {
 		echo ""
 		exit
 	fi
+	echo "END git_kernel"
 }
 
 function patch_kernel {
